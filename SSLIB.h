@@ -4,7 +4,7 @@ SSLIB : Is made help save time in programming your arduino projects by avoiding 
 #ifndef SSLIBH
 #define SSLIBH
 #include <Arduino.h>
-#include <wire.h>
+#include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
@@ -25,14 +25,14 @@ class SSLIB {
     int sensorPin;
 
   public:
-    AnalogueSensor(int pin);
+    SSLIB(int pin);
 
     int readRawValue();//read the value as it is from the analog sensor pin
     float readMT_100C_CONF1(); //read mapped to 100 calibrations Configuration 1
     float readMT_100C_CONF2(); //read mapped to 100 calibrations Configuration 2
     void aSCED();//analog sensor configuration engine detector
-    void betaINIT();//beta initialization function. Uses less space less than 10%
-    void gammaINIT();//gamma initialization function. Uses Alot Of EEPROM by over 40%
+    void betaINIT(int b);//beta initialization function. Uses less space less than 10%
+    void gammaINIT(int b);//gamma initialization function. Uses Alot Of EEPROM by over 40%
 };
 
 #endif
