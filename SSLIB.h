@@ -1,4 +1,3 @@
-
 /*
   SHEPHERDSOFT
   SSLIB - ShepherdSoft Library
@@ -24,33 +23,22 @@
 // OLED object declaration
 extern Adafruit_SSD1306 display;
 
-
 class SSLIB {
 
-  private:
-
-    int sensorPin;
-    bool sensorConfigured;
-
   public:
-
-    // Constructor
-    explicit SSLIB(int pin);
-
-    // Raw sensor reading
-    int readRawValue();
-
-    // Calibration configurations
-    float readMT_100C_CONF1();
-    float readMT_100C_CONF2();
-
-    // Analog Sensor Configuration Engine Detector
-    void aSCED();
+    template<typename... Pins>
+    void pinMODE(uint8_t mode, Pins... pins){
+      (pinMode(pins, mode), ...);
+    }
+    // Version check
+    void vv();
 
     // Initialization functions
     void betaINIT(int baud);
     void gammaINIT(int baud);
 
+    // Ultrasonic Distance Sensor 200cm at max. ### Returns something
+    void ultrasonicDS200();
 };
 
 #endif
